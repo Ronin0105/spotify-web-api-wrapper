@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import retrofit2.Call;
 import retrofit2.Response;
 import spotify.exceptions.HttpRequestFailedException;
@@ -30,6 +32,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class BrowseApiRetrofitTest extends AbstractApiRetrofitTest {
+    private final Logger logger = LoggerFactory.getLogger(BrowseApiRetrofitTest.class);
     private final String fakeCategoryId = "69";
     private final List<String> listOfFakeSeedArtists = Arrays.asList("jiankai", "zheng");
     private final List<String> listOfFakeSeedGenres = Arrays.asList("kpop", "krnb");
@@ -374,5 +377,41 @@ public class BrowseApiRetrofitTest extends AbstractApiRetrofitTest {
         verify(mockedOptionalParametersWithSeeds).put("seed_artists", fakeSeedArtists);
         verify(mockedOptionalParametersWithSeeds).put("seed_genres", fakeSeedGenres);
         verify(mockedOptionalParametersWithSeeds).put("seed_tracks", fakeSeedTracks);
+    }
+
+    @Test
+    void testSeedArtist() throws IOException {
+        when(mockedRecommendationCollectionCall.execute()).thenReturn(Response.success(new RecommendationCollection()));
+        List<String> listOfSeedArtist = List.of(); //creating an empty list
+        logger.info("Empty list");
+
+        sut.getRecommendations(listOfSeedArtist, listOfFakeSeedGenres, listOfFakeSeedTracks, mockedOptionalParametersWithSeeds);
+
+        verify(mockedOptionalParametersWithSeeds).put("seed_genres", fakeSeedGenres);
+        verify(mockedOptionalParametersWithSeeds).put("seed_tracks", fakeSeedTracks);
+    }
+
+    @Test
+    void testSeedGenre() throws IOException {
+        when(mockedRecommendationCollectionCall.execute()).thenReturn(Response.success(new RecommendationCollection()));
+        List<String> listOfSeedGenres = List.of();
+        logger.info("Empty list");
+
+        sut.getRecommendations(listOfFakeSeedArtists, listOfSeedGenres, listOfFakeSeedTracks, mockedOptionalParametersWithSeeds);
+
+        verify(mockedOptionalParametersWithSeeds).put("seed_artists", fakeSeedArtists);
+        verify(mockedOptionalParametersWithSeeds).put("seed_tracks", fakeSeedTracks);
+    }
+
+    @Test
+    void testSeedTracks() throws IOException {
+        when(mockedRecommendationCollectionCall.execute()).thenReturn(Response.success(new RecommendationCollection()));
+        List<String> listOfSeedTracks = List.of();
+        logger.info("Empty list");
+
+        sut.getRecommendations(listOfFakeSeedArtists, listOfFakeSeedGenres, listOfSeedTracks, mockedOptionalParametersWithSeeds);
+
+        verify(mockedOptionalParametersWithSeeds).put("seed_artists", fakeSeedArtists);
+        verify(mockedOptionalParametersWithSeeds).put("seed_genres", fakeSeedGenres);
     }
 }
