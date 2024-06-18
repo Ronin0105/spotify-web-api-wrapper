@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -383,12 +384,12 @@ public class BrowseApiRetrofitTest extends AbstractApiRetrofitTest {
     void testSeedArtist() throws IOException {
         when(mockedRecommendationCollectionCall.execute()).thenReturn(Response.success(new RecommendationCollection()));
         List<String> listOfSeedArtist = List.of(); //creating an empty list
-        logger.info("Empty list");
 
         sut.getRecommendations(listOfSeedArtist, listOfFakeSeedGenres, listOfFakeSeedTracks, mockedOptionalParametersWithSeeds);
 
         verify(mockedOptionalParametersWithSeeds).put("seed_genres", fakeSeedGenres);
         verify(mockedOptionalParametersWithSeeds).put("seed_tracks", fakeSeedTracks);
+        assertFalse(mockedOptionalParametersWithSeeds.containsKey("seed_artists"));
     }
 
     @Test
@@ -401,6 +402,7 @@ public class BrowseApiRetrofitTest extends AbstractApiRetrofitTest {
 
         verify(mockedOptionalParametersWithSeeds).put("seed_artists", fakeSeedArtists);
         verify(mockedOptionalParametersWithSeeds).put("seed_tracks", fakeSeedTracks);
+        assertFalse(mockedOptionalParametersWithSeeds.containsKey("seed_genres"));
     }
 
     @Test
@@ -413,5 +415,6 @@ public class BrowseApiRetrofitTest extends AbstractApiRetrofitTest {
 
         verify(mockedOptionalParametersWithSeeds).put("seed_artists", fakeSeedArtists);
         verify(mockedOptionalParametersWithSeeds).put("seed_genres", fakeSeedGenres);
+        assertFalse(mockedOptionalParametersWithSeeds.containsKey("seed_tracks"));
     }
 }

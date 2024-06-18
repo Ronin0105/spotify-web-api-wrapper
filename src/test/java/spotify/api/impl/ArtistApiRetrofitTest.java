@@ -74,7 +74,7 @@ public class ArtistApiRetrofitTest extends AbstractApiRetrofitTest {
     }
 
     @Test
-    void getArtistAlbums_emptyAlbumTypes() throws IOException { //checking for when the list that we use as parameter is empty it should not be in the mapping with the keyword "include_groups"
+    void getArtistAlbumsChecksWhenItIsEmpty() throws IOException { //checking for when the list that we use as parameter is empty it should not be in the mapping with the keyword "include_groups"
 
         List<AlbumType> emptyAlbumTypeList = Arrays.asList(); //creating an empty list
         Map<String, String> options = new HashMap<>(); //creating an empty mapping

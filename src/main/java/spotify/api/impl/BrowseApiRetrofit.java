@@ -22,11 +22,17 @@ import spotify.utils.ValidatorUtil;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 
 public class BrowseApiRetrofit implements BrowseApi {
     private final Logger logger = LoggerFactory.getLogger(BrowseApiRetrofit.class);
     private final String accessToken;
     private final BrowseService browseService;
+    // Creating a HashMap that maps String keys to Boolean values
+    private Map<String, Boolean> branchCoverage;
+
+
+
 
     public BrowseApiRetrofit(final String accessToken) {
         this(accessToken, RetrofitHttpServiceFactory.getBrowseService());
@@ -35,6 +41,10 @@ public class BrowseApiRetrofit implements BrowseApi {
     public BrowseApiRetrofit(final String accessToken, final BrowseService browseService) {
         this.accessToken = accessToken;
         this.browseService = browseService;
+        this.branchCoverage = new HashMap<>();
+        this.branchCoverage.put("artistSeedEmpty", false);
+        this.branchCoverage.put("genreSeedEmpty", false);
+        this.branchCoverage.put("tracksSeedEmpty", false);
     }
 
     @Override
@@ -184,14 +194,26 @@ public class BrowseApiRetrofit implements BrowseApi {
 
         if (!artistSeedIds.isEmpty()) {
             options.put("seed_artists", artistSeedIds);
+        }else {
+            branchCoverage.put("artistSeedEmpty", true);
         }
 
         if (!genreSeedIds.isEmpty()) {
             options.put("seed_genres", genreSeedIds);
+        }else {
+            branchCoverage.put("genreSeedEmpty", true);
         }
 
         if (!trackSeedIds.isEmpty()) {
             options.put("seed_tracks", trackSeedIds);
+        }else {
+            branchCoverage.put("tracksSeedEmpty", true);
+        }
+
+        for (Map.Entry<String, Boolean> entry : branchCoverage.entrySet()) {
+            if (entry.getValue()) {
+                logger.info("We are in the " + entry.getKey() + " branch.");
+            }
         }
     }
 }
