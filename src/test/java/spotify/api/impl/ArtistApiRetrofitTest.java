@@ -6,6 +6,7 @@ import okhttp3.ResponseBody;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import retrofit2.Call;
@@ -71,6 +72,20 @@ public class ArtistApiRetrofitTest extends AbstractApiRetrofitTest {
         when(mockedPagingAlbumSimplifiedCall.request()).thenReturn(new Request.Builder().url(fakeUrl).build());
         when(mockedTrackFullCollectionCall.request()).thenReturn(new Request.Builder().url(fakeUrl).build());
     }
+
+    @Test
+    void getArtistAlbums_emptyAlbumTypes() throws IOException { //checking for when the list that we use as parameter is empty it should not be in the mapping with the keyword "include_groups"
+
+        List<AlbumType> emptyAlbumTypeList = Arrays.asList(); //creating an empty list
+        Map<String, String> options = new HashMap<>(); //creating an empty mapping
+        when(mockedPagingAlbumSimplifiedCall.execute()).thenReturn(Response.success(new Paging<>())); //idk what this do, just copied it from line 137 where it calls the same function
+
+        sut.getArtistAlbums(fakeArtistId, emptyAlbumTypeList, options); //calls the function
+
+        verify(mockedArtistService).getArtistAlbums(fakeAccessTokenWithBearer, fakeArtistId, options); //verifies that we called the function
+        assertFalse(options.containsKey("include_groups")); //checks that options map doesn't have include_groups since it was an empty list
+    }
+
 
     @Test
     void getArtistUsesCorrectValuesToCreateHttpCall() throws IOException {
