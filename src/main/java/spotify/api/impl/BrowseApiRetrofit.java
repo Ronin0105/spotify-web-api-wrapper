@@ -43,8 +43,11 @@ public class BrowseApiRetrofit implements BrowseApi {
         this.browseService = browseService;
         this.branchCoverage = new HashMap<>();
         this.branchCoverage.put("artistSeedEmpty", false);
+        this.branchCoverage.put("artistSeedNotEmpty", false);
         this.branchCoverage.put("genreSeedEmpty", false);
+        this.branchCoverage.put("genreSeedNotEmpty", false);
         this.branchCoverage.put("tracksSeedEmpty", false);
+        this.branchCoverage.put("tracksSeedNotEmpty", false);
     }
 
     @Override
@@ -194,18 +197,21 @@ public class BrowseApiRetrofit implements BrowseApi {
 
         if (!artistSeedIds.isEmpty()) {
             options.put("seed_artists", artistSeedIds);
+            branchCoverage.put("artistSeedNotEmpty", true);
         }else {
             branchCoverage.put("artistSeedEmpty", true);
         }
 
         if (!genreSeedIds.isEmpty()) {
             options.put("seed_genres", genreSeedIds);
+            branchCoverage.put("genreSeedNotEmpty", true);
         }else {
             branchCoverage.put("genreSeedEmpty", true);
         }
 
         if (!trackSeedIds.isEmpty()) {
             options.put("seed_tracks", trackSeedIds);
+            branchCoverage.put("tracksSeedNotEmpty", true);
         }else {
             branchCoverage.put("tracksSeedEmpty", true);
         }
