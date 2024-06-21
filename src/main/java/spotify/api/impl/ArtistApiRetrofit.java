@@ -20,6 +20,7 @@ import spotify.utils.ResponseChecker;
 import spotify.utils.ValidatorUtil;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -28,6 +29,7 @@ public class ArtistApiRetrofit implements ArtistApi {
     private final Logger logger = LoggerFactory.getLogger(ArtistApiRetrofit.class);
     private final String accessToken;
     private final ArtistService artistService;
+    private Map<String, Boolean> branchCoverage;
 
     public ArtistApiRetrofit(final String accessToken) {
         this(accessToken, RetrofitHttpServiceFactory.getArtistService());
@@ -36,6 +38,9 @@ public class ArtistApiRetrofit implements ArtistApi {
     public ArtistApiRetrofit(final String accessToken, final ArtistService artistService) {
         this.accessToken = accessToken;
         this.artistService = artistService;
+        this.branchCoverage = new HashMap<>();
+        this.branchCoverage.put("listOfAlbumTypesEmpty", false);
+        this.branchCoverage.put("listOfAlbumTypesNotEmpty", false);
     }
 
     @Override
@@ -68,6 +73,14 @@ public class ArtistApiRetrofit implements ArtistApi {
 
         if (!albumTypesWithCommaDelimiter.isEmpty()) {
             options.put("include_groups", albumTypesWithCommaDelimiter);
+            branchCoverage.put("listOfAlbumTypesNotEmpty", true);
+        }else{
+            branchCoverage.put("listOfAlbumTypesEmpty", true);
+        }
+        for (Map.Entry<String, Boolean> entry : branchCoverage.entrySet()) {
+            if (entry.getValue()) {
+                logger.info("We are in the " + entry.getKey() + " branch.");
+            }
         }
 
         logger.trace("Constructing HTTP call to fetch albums of an artist.");
@@ -87,6 +100,7 @@ public class ArtistApiRetrofit implements ArtistApi {
             logger.error("Fetching artist albums has failed.");
             throw new HttpRequestFailedException(e.getMessage());
         }
+
     }
 
     @Override
