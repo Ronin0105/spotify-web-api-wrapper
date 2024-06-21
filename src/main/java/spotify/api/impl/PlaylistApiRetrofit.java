@@ -23,6 +23,7 @@ import spotify.utils.ResponseChecker;
 import spotify.utils.ValidatorUtil;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,10 +31,15 @@ public class PlaylistApiRetrofit implements PlaylistApi {
     private final Logger logger = LoggerFactory.getLogger(PlaylistApiRetrofit.class);
     private final String accessToken;
     private final PlaylistService playlistService;
+    private Map<String, Boolean> branchCoverage;
+
 
 
     public PlaylistApiRetrofit(final String accessToken) {
         this(accessToken, RetrofitHttpServiceFactory.getPlaylistService());
+        this.branchCoverage = new HashMap<>();
+        this.branchCoverage.put("emptyPlaylistID",false);
+        this.branchCoverage.put("snapshotIDIsNotEmpty",false);
     }
 
     public PlaylistApiRetrofit(final String accessToken, final PlaylistService playlistService) {
@@ -183,6 +189,7 @@ public class PlaylistApiRetrofit implements PlaylistApi {
             logger.error(errorMessage);
             throw new IllegalArgumentException(errorMessage);
         }
+        //TODO: ADD BRANCH COVERAGE TRACKING
 
         logger.trace("Constructing HTTP call to create a playlist.");
         Call<Void> httpCall = playlistService.createPlaylist("Bearer " + this.accessToken, userId, requestBody);
@@ -214,6 +221,7 @@ public class PlaylistApiRetrofit implements PlaylistApi {
             logger.error(errorMessage);
             throw new IllegalArgumentException(errorMessage);
         }
+
 
         logger.trace("Constructing HTTP call to update a playlist.");
         Call<Void> httpCall = playlistService.updatePlaylist("Bearer " + this.accessToken, playlistId, requestBody);
@@ -334,6 +342,7 @@ public class PlaylistApiRetrofit implements PlaylistApi {
             logger.warn("An empty snapshot id was passed in. The snapshot id has now been set to NULL.");
             items.setSnapshotId(null);
         }
+        //TODO: ADD BRANCH COVERAGE TRACKING
 
         logger.trace("Constructing HTTP call to remove items from a playlist.");
         Call<Snapshot> httpCall = playlistService.deleteItemsFromPlaylist("Bearer " + this.accessToken, playlistId, items);

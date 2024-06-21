@@ -31,8 +31,7 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.isA;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class PlaylistApiRetrofitTest extends AbstractApiRetrofitTest {
     private final String fakePlaylistId = "69";
@@ -88,6 +87,7 @@ public class PlaylistApiRetrofitTest extends AbstractApiRetrofitTest {
         when(mockedListOfImagesCall.request()).thenReturn(new Request.Builder().url(fakeUrl).build());
         when(mockedPlaylistTrackPagingCall.request()).thenReturn(new Request.Builder().url(fakeUrl).build());
         when(mockedSnapshotCall.request()).thenReturn(new Request.Builder().url(fakeUrl).build());
+
     }
 
     @Test
@@ -98,6 +98,8 @@ public class PlaylistApiRetrofitTest extends AbstractApiRetrofitTest {
 
         verify(mockedPlaylistService).getPlaylists(fakeAccessTokenWithBearer, fakeOptionalParameters);
     }
+
+
 
     @Test
     void getPlaylistsExecutesHttpCall() throws IOException {
@@ -381,6 +383,19 @@ public class PlaylistApiRetrofitTest extends AbstractApiRetrofitTest {
         sut.createPlaylist(fakeUserId, mockedCreateUpdatePlaylistRequestBody);
 
         verify(mockedVoidCall).execute();
+    }
+    //to test true hits on userId.isEmpty()
+    //TODO: CHECK IF WE SHOULD DELETE THE ORIGINAL createPlaylistThrowsIllegalArgumentExceptionWhenUserIdIsEmptry (they did a typo fr)
+    @Test
+    void createPlaylistThrowsIllegalArgumentExceptionWhenUserIdIsEmpty() {
+        when(mockedCreateUpdatePlaylistRequestBody.getName()).thenReturn("");
+
+
+        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            sut.createPlaylist("", mockedCreateUpdatePlaylistRequestBody);
+        });
+
+        Assertions.assertEquals("Required parameters are empty!", exception.getMessage());
     }
 
     @Test
@@ -731,7 +746,6 @@ public class PlaylistApiRetrofitTest extends AbstractApiRetrofitTest {
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> sut.deleteItemsFromPlaylist("", mockedDeleteItemsPlaylistRequestBody));
     }
-
     @Test
     void deleteItemsFromPlaylistSetsSnapshotIdToNullWhenSnapshotIdIsEmpty() throws IOException {
         when(mockedDeleteItemsPlaylistRequestBody.getSnapshotId()).thenReturn("");
@@ -740,5 +754,16 @@ public class PlaylistApiRetrofitTest extends AbstractApiRetrofitTest {
         sut.deleteItemsFromPlaylist(fakePlaylistId, mockedDeleteItemsPlaylistRequestBody);
 
         verify(mockedDeleteItemsPlaylistRequestBody).setSnapshotId(null);
+    }
+    @Test
+    void deleteItemsFromPlaylistSetsSnapshotIdNotToNullWhenSnapshotIdIsNotEmpty() throws IOException {
+        //added the string inside thenReturn to increase false hits in the line if (items.getSnapshotId() != null && items.getSnapshotId().isEmpty())
+        // function deleteItemsFromPlaylist
+        //it is basically a copy of the code from above but with a-non empty string return so that the coverage also tests for false hits
+        when(mockedDeleteItemsPlaylistRequestBody.getSnapshotId()).thenReturn("notEmptySnapshotId");
+        when(mockedSnapshotCall.execute()).thenReturn(Response.success(null));
+
+        sut.deleteItemsFromPlaylist(fakePlaylistId, mockedDeleteItemsPlaylistRequestBody);
+        //TODO: need to verify something
     }
 }
