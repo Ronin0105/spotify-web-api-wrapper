@@ -17,10 +17,7 @@ import spotify.exceptions.HttpRequestFailedException;
 import spotify.exceptions.SpotifyActionFailedException;
 import spotify.models.generic.Image;
 import spotify.models.paging.Paging;
-import spotify.models.playlists.PlaylistFull;
-import spotify.models.playlists.PlaylistSimplified;
-import spotify.models.playlists.PlaylistTrack;
-import spotify.models.playlists.Snapshot;
+import spotify.models.playlists.*;
 import spotify.models.playlists.requests.*;
 import spotify.retrofit.services.PlaylistService;
 
