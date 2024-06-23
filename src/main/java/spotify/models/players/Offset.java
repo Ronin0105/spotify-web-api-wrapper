@@ -39,10 +39,11 @@ public class Offset {
     public void setUri(String uri) {
         if (position != null && !position.isEmpty()) {
             coverageCheck.put("SetURI", true);
+            System.out.println("SetURI " + coverageCheck.get("SetURI"));
             throw new IllegalStateException("Uri can not be set because position already has a value.");
         }
 
-        System.out.println("bruh");
+        System.out.println("SetURI " + coverageCheck.get("SetURI"));
         this.uri = uri;
     }
 
