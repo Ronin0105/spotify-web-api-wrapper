@@ -20,12 +20,18 @@ import spotify.models.paging.Paging;
 import spotify.models.playlists.*;
 import spotify.models.playlists.requests.*;
 import spotify.retrofit.services.PlaylistService;
+import spotify.api.impl.PlaylistApiRetrofit;
+import java.lang.reflect.Method;
+
+
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.*;
@@ -763,4 +769,23 @@ public class PlaylistApiRetrofitTest extends AbstractApiRetrofitTest {
         sut.deleteItemsFromPlaylist(fakePlaylistId, mockedDeleteItemsPlaylistRequestBody);
         //TODO: need to verify something
     }
+
+    @Test
+    void validateParametersReorderTest() {
+        String playlistID = "30";
+        String snapshotID = "1";
+        int rangeStart = 0;
+        int rangeLength = 10;
+        int insertBefore = 5;
+        ReorderPlaylistItemsRequestBody requestBody = new ReorderPlaylistItemsRequestBody(rangeStart,rangeLength,insertBefore, snapshotID);
+        PlaylistApiRetrofit object = new PlaylistApiRetrofit("033");
+
+        if(playlistID == null || playlistID.isEmpty()) {
+            Assertions.assertThrows(IllegalArgumentException.class, () -> object.validateParametersReorderFunction(playlistID, requestBody));
+        }
+        else {
+            Assertions.assertEquals(requestBody.getSnapshotId(), snapshotID);
+        }
+    }
+
 }

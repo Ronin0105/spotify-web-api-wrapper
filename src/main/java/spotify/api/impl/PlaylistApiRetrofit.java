@@ -31,15 +31,20 @@ public class PlaylistApiRetrofit implements PlaylistApi {
     private final Logger logger = LoggerFactory.getLogger(PlaylistApiRetrofit.class);
     private final String accessToken;
     private final PlaylistService playlistService;
-    private Map<String, Boolean> branchCoverage;
+
+    private static Map<String, Boolean> branchCoverage;
+    static{
+        branchCoverage = new HashMap<>();
+        branchCoverage.put("emptyPlaylistID", false);
+        branchCoverage.put("snapshotIDIsNotEmpty", false);
+        branchCoverage.put("playlistEmpty", false);
+        branchCoverage.put("emptySnapshotID", false);
+    }
 
 
 
     public PlaylistApiRetrofit(final String accessToken) {
         this(accessToken, RetrofitHttpServiceFactory.getPlaylistService());
-        this.branchCoverage = new HashMap<>();
-        this.branchCoverage.put("emptyPlaylistID",false);
-        this.branchCoverage.put("snapshotIDIsNotEmpty",false);
     }
 
     public PlaylistApiRetrofit(final String accessToken, final PlaylistService playlistService) {
@@ -364,15 +369,20 @@ public class PlaylistApiRetrofit implements PlaylistApi {
         }
     }
 
-    private void validateParametersReorderFunction(String playlistId, ReorderPlaylistItemsRequestBody requestBody) {
+    void validateParametersReorderFunction(String playlistId, ReorderPlaylistItemsRequestBody requestBody) {
         if (playlistId == null || playlistId.isEmpty()) {
+            branchCoverage.put("playlistEmpty",true);
             final String errorMessage = "Playlist id can not be empty!";
+            System.out.println("playlistEmpty: " + branchCoverage.get("playlistEmpty"));
             logger.error(errorMessage);
             throw new IllegalArgumentException(errorMessage);
         }
 
         if (requestBody.getSnapshotId() != null && requestBody.getSnapshotId().isEmpty()) {
+            branchCoverage.put("emptySnapshotID",true);
             logger.warn("An empty snapshot id was passed in. The snapshot id has now been set to NULL.");
+            System.out.println("emptySnapshotID: " + branchCoverage.get("emptySnapshotID"));
+
             requestBody.setSnapshotId(null);
         }
     }
