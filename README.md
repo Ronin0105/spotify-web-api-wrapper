@@ -4,6 +4,7 @@
 Spotify API wrapper for Java
 
 ## Table of Contents
+Testing changes
 - [Guides](#guides)
 - [Support](#support)
 - [Example usages](#example-usages)
