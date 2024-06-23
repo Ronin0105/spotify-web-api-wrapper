@@ -53,11 +53,46 @@ Initial code coverage:
   
   <img width="539" alt="Deserialize-true" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/76489277-7d4c-455f-83de-c207cb737b43">
 
+<Milan>
 
+<Toprak>
+
+<Cam>
+  
 ##Individual Tests
 
-  
+<Jakub Kavan (vu\jka246)>
 
+  The coverage results shown are specific to each class to demonstrate the code coverage change in a vacuum 
+
+  Test for setURI:
+
+  Link to commit: https://github.com/Ronin0105/spotify-web-api-wrapper/commit/34d147b0355a860f89e1a3a5cedb06df1cdd27aa
+  
+  Coverage Results Before Test Implementation:
+
+  <img width="465" alt="branchCovg-uri-before" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/5f075a5f-a49b-4f28-ac7a-253cf492072a">
+
+  Coverage Results After Test Implementation:
+
+  <img width="464" alt="coverage-uri-post" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/163eba2f-2c16-40c5-adb9-35108d956e2c">
+
+  Reason For Coverage Improvement: The whole Offset class was not tested at all, my teammate and I split the class, where I did the setURI and the reason for the improvement was that the created test was checking whether an error "if" statement was hit and then if the program threw the correct error message.
+
+  Test for Deserialize:
+
+  Link to commit: [https://github.com/Ronin0105/spotify-web-api-wrapper/commit/34d147b0355a860f89e1a3a5cedb06df1cdd27aa](https://github.com/Ronin0105/spotify-web-api-wrapper/commit/b414b6b30f4a347f25de2120994efc5e406d4c56)
+  
+  Coverage Results Before Test Implementation:
+
+  <img width="466" alt="coverage-deser-pre" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/b9ee89aa-7a2f-4546-9715-6ab4f595787f">
+
+  Coverage Results After Test Implementation:
+
+  <img width="469" alt="coverage-deser-post" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/af0d6600-506d-421f-b9a4-c983450ccee1">
+
+  Reason For Coverage Improvement: The coverage increased after adding the test as there was no testing for the condition where either the "if" or the "else if" did not hit, meaning that the invisible "else" statement was not tested for. As a result the test simply consisted of checking whether the final value of the variable stayed NULL.
+  
 <Milan>
 
 <Toprak>
