@@ -57,4 +57,13 @@ public class AbstractPlayableObjectDeserializerTest {
 
         Assertions.assertTrue(object instanceof EpisodeFull);
     }
+
+    @Test
+    void deserializerMapsToNullWhenTypeIsNull() {
+        mockedJsonObject.addProperty("type", "randomVal");
+
+        AbstractPlayableObject object = sut.deserialize(mockedJsonElement, mockedType, mockedJsonDeserializationContext);
+
+        Assertions.assertNull(object);
+    }
 }
