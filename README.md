@@ -17,6 +17,7 @@ Programming Language: Java
 We used the integrated IntelliJ Idea Code Coverage tool 
 
 Initial code coverage: 
+
 <img width="473" alt="original coverage" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/0019e384-4e1f-4290-abfe-9b4f2ea24e63">
 
 <Jakub Kavan (vu\jka246)>
@@ -30,9 +31,11 @@ Initial code coverage:
   ScreenShots:
 
   When running a test does not enter the conditional statement:
+  
   <img width="526" alt="URI-test-false" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/992d1947-e368-4d24-bb24-306144f20d78">
 
   When running a test does enter the conditional statement:
+  
   <img width="531" alt="URI-test-true" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/9992390f-8fe9-4080-b9dd-66b61dfc2c60">
 
   Function name: Deserialize 
@@ -42,10 +45,12 @@ Initial code coverage:
   ScreenShots:
 
   When running a test does not enter the conditional statement:
+  
   <img width="530" alt="Deserialize-false" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/13725fbc-61e1-42d8-b7ee-aa5e8d0e735b">
 
 
   When running a test does enter the conditional statement:
+  
   <img width="539" alt="Deserialize-true" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/76489277-7d4c-455f-83de-c207cb737b43">
 
 
