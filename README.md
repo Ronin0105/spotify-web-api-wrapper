@@ -54,10 +54,41 @@ Initial code coverage:
   <img width="539" alt="Deserialize-true" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/76489277-7d4c-455f-83de-c207cb737b43">
 
 <Milan>
+  
+ Function name: 
+
+  The link to the commit where I wrote the instrumentation:
+
+  ScreenShots:
+
+  When running a test does not enter the conditional statement:
+  
+  When running a test does enter the conditional statement:
+  
 
 <Toprak>
+  
+ Function name: 
+
+  The link to the commit where I wrote the instrumentation:
+
+  ScreenShots:
+
+  When running a test does not enter the conditional statement:
+  
+  When running a test does enter the conditional statement:
 
 <Cam>
+
+ Function name: 
+
+  The link to the commit where I wrote the instrumentation:
+
+  ScreenShots:
+
+  When running a test does not enter the conditional statement:
+  
+  When running a test does enter the conditional statement:
   
 ##Individual Tests
 
@@ -95,17 +126,41 @@ Initial code coverage:
   
 <Milan>
 
+  Test for ...:
+
+  Link to commit: 
+  
+  Coverage Results Before Test Implementation:
+
+  Coverage Results After Test Implementation:
+
+  Reason For Coverage Improvement: 
+
 <Toprak>
 
+  Test for ...:
+
+  Link to commit: 
+  
+  Coverage Results Before Test Implementation:
+
+  Coverage Results After Test Implementation:
+
+  Reason For Coverage Improvement: 
+
 <Cam>
+  
+  Test for ...:
+
+  Link to commit: 
+  
+  Coverage Results Before Test Implementation:
+
+  Coverage Results After Test Implementation:
+
+  Reason For Coverage Improvement: 
 
 ##Overall 
-
-***Image of Original Coverage 
-
-***Image of New Coverage 
-
-##Statement of Individual Contribution
 
 Original Coverage:
 
@@ -115,7 +170,9 @@ Coverage Post Implementation:
 
 <img width="477" alt="coverage post-implementation" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/d148f3aa-bb09-4327-bad7-b542230336a3">
 
-Jakub Kavan - 
+##Statement of Individual Contribution
+
+Jakub Kavan - I singularly worked on the AbstractPlayableObjectDeserializer class and created a test to complete its coverage to 100%. Then in the Offset class, a teammate and I worked on it together, where I tested the error conditions and finished the tests increasing the coverage by 50%. Additionally, I worked and created the structure for the Readme file so that my teammates would have an easier time writing their evaluations. Overall the communication and cooperation between the team was great.
 
 
 
