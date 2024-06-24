@@ -74,15 +74,18 @@ Initial code coverage:
 
   ScreenShots: 
 
-  When running a test does not enter the conditional statement:
+  When running a test does not enter the conditional statement: 
+  <img width="1323" alt="Screenshot 2024-06-25 at 00 26 17" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/121942362/cebd6918-431e-4371-8b5f-b1505505d24f">
   
   When running a test does enter the conditional statement:
+  <img width="845" alt="Screenshot 2024-06-25 at 00 25 45" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/121942362/367ba772-26dc-498d-b0e1-0e46fed96caf">
+
 
 Function name:  checkErrorBody
 
 The link to the commit where I wrote the instrumentation: https://github.com/Ronin0105/spotify-web-api-wrapper/commit/4863443ed6569ca4615f42f03c43a735ecc745c5 and https://github.com/jzheng2017/spotify-web-api-wrapper/commit/3d1d5b82a342618e40c8e502aadf98e59b615105#diff-ed5a31847df0613bf3010979f21d841820ee0dd74f634ce89e8f1082f0c82869
 
-ScreenShots: ![instrumentation #2.png](..%2F..%2F..%2F..%2FDesktop%2Finstrumentation%20%232.png)
+ScreenShots: <img width="1321" alt="instrumentation #2" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/121942362/d1229783-4659-4847-8897-0cd13a91f7d7">
 
 <Can>
 
@@ -144,17 +147,32 @@ ScreenShots: ![instrumentation #2.png](..%2F..%2F..%2F..%2FDesktop%2Finstrumenta
 
 <Toprak>
 
-  Test for ...:
+  Test for setPosition:
 
-  Link to commit: 
+  Link to commit: https://github.com/jzheng2017/spotify-web-api-wrapper/commit/8e28553ef93508871c0ebb223c4e601762939c25
   
-  Coverage Results Before Test Implementation:
+  Coverage Results Before Test Implementation: 
+  <img width="863" alt="Before - Offset" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/121942362/f5b165a7-694f-4e45-b1dd-db6b047a90ab">
 
-  Coverage Results After Test Implementation:
+  Coverage Results After Test Implementation:   
+  <img width="464" alt="coverage-uri-post" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/163eba2f-2c16-40c5-adb9-35108d956e2c">
 
-  Reason For Coverage Improvement: 
 
-<Cam>
+  Reason For Coverage Improvement: This class had no test suite meaning there was no checks for the if clauses and how they interacted; so I decided to create a test file to do so. It checked code coverage for setPosition method. I later on added existing method for setPosition.
+
+  Test for checkErrorBody:
+
+  Link to commit: https://github.com/jzheng2017/spotify-web-api-wrapper/commit/3d1d5b82a342618e40c8e502aadf98e59b615105
+  
+  Coverage Results Before Test Implementation: <img width="655" alt="Before - Response" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/121942362/401d0ce9-e63d-4f9f-b490-3b795b5779e1">
+
+
+  Coverage Results After Test Implementation: <img width="646" alt="After - Response" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/121942362/a63fecf7-11cd-462c-ac6a-38f72318c55c">
+
+
+  Reason For Coverage Improvement: The reason I added coverage was the sole reason that spotifyError == null, which did not necessarily cover the if clause when error code 400 is thrown. I added a method that virtually creates a variable that has 400 status code thrown and then checked it with the correspondent error that is thrown on the method.
+
+<Can>
   
   Test for ...:
 
@@ -179,6 +197,8 @@ Coverage Post Implementation:
 ##Statement of Individual Contribution
 
 Jakub Kavan - I singularly worked on the AbstractPlayableObjectDeserializer class and created a test to complete its coverage to 100%. Then in the Offset class, a teammate and I worked on it together, where I tested the error conditions and finished the tests increasing the coverage by 50%. Additionally, I worked and created the structure for the Readme file so that my teammates would have an easier time writing their evaluations. Overall the communication and cooperation between the team was great.
+
+Sarp Toprak Birben - I worked on ResponseChecker and PlaylistApiRetrofit, although I have added coverage & instrumentation to the class, responseChecker. I could not add any improvement to the coverage, and then later on I completed ResponseChecker. For the other code improvement, I worked with my teammate on Offset class where we took on two different methods and increased its coverage and added instrumentation.
 
 
 
