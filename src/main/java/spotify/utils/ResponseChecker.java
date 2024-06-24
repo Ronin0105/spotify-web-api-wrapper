@@ -23,6 +23,7 @@ public class ResponseChecker {
     static{
         branchCoverage = new HashMap<>();
         branchCoverage.put("spotifyError", false);
+        branchCoverage.put("hasFailed", false);
 
     }
 
@@ -72,6 +73,8 @@ public class ResponseChecker {
                     statusCode,
                     message
             );
+            branchCoverage.put("hasFailed", true);
+            System.out.println("hasFailed:  " + branchCoverage.get("hasFailed"));
             throw new SpotifyActionFailedException(message);
         }
     }
