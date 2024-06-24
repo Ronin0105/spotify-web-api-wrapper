@@ -66,13 +66,13 @@ Initial code coverage:
   When running a test does enter the conditional statement:
   
 
-<Toprak (vu\tbi204)>
+<Toprak>
   
- Function name:  setPosition
+ Function name: setPosition
 
   The link to the commit where I wrote the instrumentation:
 
-  ScreenShots: 
+  ScreenShots: https://github.com/jzheng2017/spotify-web-api-wrapper/commit/8e28553ef93508871c0ebb223c4e601762939c25
 
   When running a test does not enter the conditional statement: 
   <img width="1323" alt="Screenshot 2024-06-25 at 00 26 17" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/121942362/cebd6918-431e-4371-8b5f-b1505505d24f">
