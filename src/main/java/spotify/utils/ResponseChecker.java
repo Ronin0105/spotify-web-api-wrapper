@@ -3,6 +3,7 @@ package spotify.utils;
 
 import com.google.gson.Gson;
 import okhttp3.ResponseBody;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import retrofit2.Response;
@@ -10,8 +11,20 @@ import spotify.api.enums.HttpStatusCode;
 import spotify.exceptions.SpotifyActionFailedException;
 import spotify.models.errors.SpotifyError;
 
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.junit.Assert.assertThrows;
+
 public class ResponseChecker {
     private final static Logger logger = LoggerFactory.getLogger(ResponseChecker.class);
+    private static Map<String, Boolean> branchCoverage;
+    static{
+        branchCoverage = new HashMap<>();
+        branchCoverage.put("spotifyError", false);
+
+    }
 
     public static <T> void throwIfRequestHasNotBeenFulfilledCorrectly(final Response<T> response, final HttpStatusCode expectedStatusCode) {
         checkHttpStatusCode(response, expectedStatusCode.toInt());
@@ -41,6 +54,8 @@ public class ResponseChecker {
         SpotifyError spotifyError = gson.fromJson(errorBody.charStream(), SpotifyError.class);
 
         if (spotifyError == null) {
+            branchCoverage.put("spotifyError", true);
+            System.out.println("spotifyError " + branchCoverage.get("spotifyError"));
             final String errorMessage = "HTTP request to Spotify's server has not been fulfilled correctly. Reason is unknown.";
             logger.error(errorMessage);
             logger.warn("Converting error body to SpotifyError object has failed for some reason.");

@@ -5,6 +5,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import okio.Buffer;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -774,13 +775,19 @@ public class PlaylistApiRetrofitTest extends AbstractApiRetrofitTest {
     @Test
     void validateParametersReorderFunctionTestWithNullSnapshotId() {
         mockedReorderPlaylistItemsRequestBody.setSnapshotId(null);
-        Assertions.assertEquals(mockedReorderPlaylistItemsRequestBody.getSnapshotId(), null);
+        Assertions.assertDoesNotThrow(() -> sut.validateParametersReorderFunction(fakePlaylistId, mockedReorderPlaylistItemsRequestBody));
+    }
+
+    @Test
+    void validateParametersReorderFunctionTestWithNonEmptySnapshotId() {
+        mockedReorderPlaylistItemsRequestBody.setSnapshotId("3");
+        Assertions.assertDoesNotThrow(() -> sut.validateParametersReorderFunction(fakePlaylistId, mockedReorderPlaylistItemsRequestBody));
     }
 
     @Test
     void validateParametersReorderFunctionTestWithEmptySnapshotId() {
         mockedReorderPlaylistItemsRequestBody.setSnapshotId(" ");
-        Assertions.assertEquals(mockedReorderPlaylistItemsRequestBody.getSnapshotId(), null);
+        Assertions.assertDoesNotThrow(() -> sut.validateParametersReorderFunction(fakePlaylistId, mockedReorderPlaylistItemsRequestBody));
     }
 
 }
