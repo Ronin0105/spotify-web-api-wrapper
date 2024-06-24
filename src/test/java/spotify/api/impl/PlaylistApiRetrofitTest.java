@@ -770,22 +770,17 @@ public class PlaylistApiRetrofitTest extends AbstractApiRetrofitTest {
         //TODO: need to verify something
     }
 
-    @Test
-    void validateParametersReorderTest() {
-        String playlistID = "30";
-        String snapshotID = "1";
-        int rangeStart = 0;
-        int rangeLength = 10;
-        int insertBefore = 5;
-        ReorderPlaylistItemsRequestBody requestBody = new ReorderPlaylistItemsRequestBody(rangeStart,rangeLength,insertBefore, snapshotID);
-        PlaylistApiRetrofit object = new PlaylistApiRetrofit("033");
 
-        if(playlistID == null || playlistID.isEmpty()) {
-            Assertions.assertThrows(IllegalArgumentException.class, () -> object.validateParametersReorderFunction(playlistID, requestBody));
-        }
-        else {
-            Assertions.assertEquals(requestBody.getSnapshotId(), snapshotID);
-        }
+    @Test
+    void validateParametersReorderFunctionTestWithNullSnapshotId() {
+        mockedReorderPlaylistItemsRequestBody.setSnapshotId(null);
+        Assertions.assertEquals(mockedReorderPlaylistItemsRequestBody.getSnapshotId(), null);
+    }
+
+    @Test
+    void validateParametersReorderFunctionTestWithEmptySnapshotId() {
+        mockedReorderPlaylistItemsRequestBody.setSnapshotId(" ");
+        Assertions.assertEquals(mockedReorderPlaylistItemsRequestBody.getSnapshotId(), null);
     }
 
 }
