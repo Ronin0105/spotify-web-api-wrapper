@@ -66,19 +66,25 @@ Initial code coverage:
   When running a test does enter the conditional statement:
   
 
-<Toprak>
+<Toprak (vu\tbi204)>
   
- Function name: 
+ Function name:  setPosition
 
   The link to the commit where I wrote the instrumentation:
 
-  ScreenShots:
+  ScreenShots: 
 
   When running a test does not enter the conditional statement:
   
   When running a test does enter the conditional statement:
 
-<Cam>
+Function name:  checkErrorBody
+
+The link to the commit where I wrote the instrumentation: https://github.com/Ronin0105/spotify-web-api-wrapper/commit/4863443ed6569ca4615f42f03c43a735ecc745c5 and https://github.com/jzheng2017/spotify-web-api-wrapper/commit/3d1d5b82a342618e40c8e502aadf98e59b615105#diff-ed5a31847df0613bf3010979f21d841820ee0dd74f634ce89e8f1082f0c82869
+
+ScreenShots: ![instrumentation #2.png](..%2F..%2F..%2F..%2FDesktop%2Finstrumentation%20%232.png)
+
+<Can>
 
  Function name: 
 
