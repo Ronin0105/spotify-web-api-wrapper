@@ -767,8 +767,10 @@ public class PlaylistApiRetrofitTest extends AbstractApiRetrofitTest {
         when(mockedDeleteItemsPlaylistRequestBody.getSnapshotId()).thenReturn("notEmptySnapshotId");
         when(mockedSnapshotCall.execute()).thenReturn(Response.success(null));
 
+
         sut.deleteItemsFromPlaylist(fakePlaylistId, mockedDeleteItemsPlaylistRequestBody);
-        //TODO: need to verify something
+        String snapshotID = mockedDeleteItemsPlaylistRequestBody.getSnapshotId();
+        verify(mockedDeleteItemsPlaylistRequestBody).setSnapshotId(snapshotID);
     }
 
 

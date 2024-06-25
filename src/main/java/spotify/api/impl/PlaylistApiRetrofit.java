@@ -35,7 +35,7 @@ public class PlaylistApiRetrofit implements PlaylistApi {
     private static Map<String, Boolean> branchCoverage;
     static{
         branchCoverage = new HashMap<>();
-        branchCoverage.put("emptyPlaylistID", false);
+        branchCoverage.put("emptyUserID", false);
         branchCoverage.put("snapshotIDIsNotEmpty", false);
         branchCoverage.put("playlistEmpty", false);
         branchCoverage.put("emptySnapshotID", false);
@@ -191,10 +191,12 @@ public class PlaylistApiRetrofit implements PlaylistApi {
     public void createPlaylist(String userId, CreateUpdatePlaylistRequestBody requestBody) {
         if (userId == null || requestBody.getName() == null || userId.isEmpty() || requestBody.getName().isEmpty()) {
             final String errorMessage = "Required parameters are empty!";
+            branchCoverage.put("emptyUserID",true);
+            System.out.println("emptyUserID: " + branchCoverage.get("emptyUserID"));
             logger.error(errorMessage);
             throw new IllegalArgumentException(errorMessage);
         }
-        //TODO: ADD BRANCH COVERAGE TRACKING
+
 
         logger.trace("Constructing HTTP call to create a playlist.");
         Call<Void> httpCall = playlistService.createPlaylist("Bearer " + this.accessToken, userId, requestBody);
@@ -346,6 +348,11 @@ public class PlaylistApiRetrofit implements PlaylistApi {
         if (items.getSnapshotId() != null && items.getSnapshotId().isEmpty()) {
             logger.warn("An empty snapshot id was passed in. The snapshot id has now been set to NULL.");
             items.setSnapshotId(null);
+        }else{
+            branchCoverage.put("snapshotIDIsNotEmpty",true);
+            System.out.println("snapshotIDIsNotEmpty: " + branchCoverage.get("snapshotIDIsNotEmpty"));
+            String snapshotID = items.getSnapshotId();
+            items.setSnapshotId(snapshotID);
         }
         //TODO: ADD BRANCH COVERAGE TRACKING
 
