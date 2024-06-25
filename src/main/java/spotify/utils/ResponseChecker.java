@@ -3,7 +3,6 @@ package spotify.utils;
 
 import com.google.gson.Gson;
 import okhttp3.ResponseBody;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import retrofit2.Response;
@@ -15,7 +14,6 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertThrows;
 
 public class ResponseChecker {
     private final static Logger logger = LoggerFactory.getLogger(ResponseChecker.class);
