@@ -5,7 +5,6 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import okio.Buffer;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -767,8 +766,10 @@ public class PlaylistApiRetrofitTest extends AbstractApiRetrofitTest {
         when(mockedDeleteItemsPlaylistRequestBody.getSnapshotId()).thenReturn("notEmptySnapshotId");
         when(mockedSnapshotCall.execute()).thenReturn(Response.success(null));
 
+
         sut.deleteItemsFromPlaylist(fakePlaylistId, mockedDeleteItemsPlaylistRequestBody);
-        //TODO: need to verify something
+        String snapshotID = mockedDeleteItemsPlaylistRequestBody.getSnapshotId();
+        verify(mockedDeleteItemsPlaylistRequestBody).setSnapshotId(snapshotID);
     }
 
 
