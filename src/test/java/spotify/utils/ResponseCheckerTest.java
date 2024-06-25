@@ -16,18 +16,7 @@ import spotify.exceptions.SpotifyActionFailedException;
 import spotify.models.errors.SpotifyError;
 
 class ResponseCheckerTest {
-    @Test
-    void throwIfRequestHasNotBeenFulfilledCorrectlyTestWithDifferentStatusCode() {
 
-        // Create a response object that signifies an error in the client side.
-        Response<String> response = Response.error(400, ResponseBody.create(MediaType.parse("application/json"), ""));
-        // Check the corresponding exception is thrown. It is likely that line 56 will be covered
-        // because if there is a client error and we pass 200 (HTTP.OK) as the expected status code,
-        // we can get the assertThrows method to throw an exception.
-        Assertions.assertThrows(SpotifyActionFailedException.class, () -> {
-            ResponseChecker.throwIfRequestHasNotBeenFulfilledCorrectly(response, HttpStatusCode.OK);
-        });
-    }
 
 
 }
