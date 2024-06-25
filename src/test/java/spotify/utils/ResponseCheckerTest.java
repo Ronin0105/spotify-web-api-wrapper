@@ -16,7 +16,4 @@ import spotify.exceptions.SpotifyActionFailedException;
 import spotify.models.errors.SpotifyError;
 
 class ResponseCheckerTest {
-
-
-
 }
