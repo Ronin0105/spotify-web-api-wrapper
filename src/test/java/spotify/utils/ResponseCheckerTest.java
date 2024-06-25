@@ -16,4 +16,12 @@ import spotify.exceptions.SpotifyActionFailedException;
 import spotify.models.errors.SpotifyError;
 
 class ResponseCheckerTest {
+    @Test
+    void checkErrorBodyTest() {
+
+        Response<String> response = Response.error(400, ResponseBody.create(MediaType.parse("application/json"), ""));
+        Assertions.assertThrows(SpotifyActionFailedException.class, () -> {
+            ResponseChecker.throwIfRequestHasNotBeenFulfilledCorrectly(response, HttpStatusCode.OK);
+        });
+    }
 }
