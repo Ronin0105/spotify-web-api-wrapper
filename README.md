@@ -162,7 +162,7 @@ ScreenShots: <img width="1321" alt="instrumentation #2" src="https://github.com/
 
   Test for checkErrorBody:
 
-  Link to commit: https://github.com/jzheng2017/spotify-web-api-wrapper/commit/3d1d5b82a342618e40c8e502aadf98e59b615105
+  Link to commit: [https://github.com/jzheng2017/spotify-web-api-wrapper/commit/3d1d5b82a342618e40c8e502aadf98e59b615105](https://github.com/jzheng2017/spotify-web-api-wrapper/commit/7d9c7d1447e3ef79df5a7b31f516f56412ae929b)
   
   Coverage Results Before Test Implementation: <img width="655" alt="Before - Response" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/121942362/401d0ce9-e63d-4f9f-b490-3b795b5779e1">
 
