@@ -6,7 +6,7 @@ Name: Spotify Web Api Wrapper
 
 URL: https://github.com/jzheng2017/spotify-web-api-wrapper
 
-Number of Lines of code: ...
+Number of Lines of code: 10.681
 
 The tool used to Count Lines: Lizard
 
