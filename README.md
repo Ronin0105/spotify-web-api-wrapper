@@ -20,7 +20,7 @@ Initial code coverage:
 
 <img width="473" alt="original coverage" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/0019e384-4e1f-4290-abfe-9b4f2ea24e63">
 
-<Jakub Kavan (vu\jka246)>
+Jakub Kavan (vu\jka246)
 
 ##Own Coverage Tool
 
@@ -53,7 +53,7 @@ Initial code coverage:
   
   <img width="539" alt="Deserialize-true" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/76489277-7d4c-455f-83de-c207cb737b43">
 
-<Milan>
+Milan
   
  Function name: 
 
@@ -66,7 +66,7 @@ Initial code coverage:
   When running a test does enter the conditional statement:
   
 
-<Toprak>
+Toprak
   
  Function name: setPosition
 
@@ -87,7 +87,7 @@ The link to the commit where I wrote the instrumentation: https://github.com/Ron
 
 ScreenShots: <img width="1321" alt="instrumentation #2" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/121942362/d1229783-4659-4847-8897-0cd13a91f7d7">
 
-<Can>
+Can
 
  Function name: 
 
@@ -133,7 +133,7 @@ ScreenShots: <img width="1321" alt="instrumentation #2" src="https://github.com/
 
   Reason For Coverage Improvement: The coverage increased after adding the test as there was no testing for the condition where either the "if" or the "else if" did not hit, meaning that the invisible "else" statement was not tested for. As a result the test simply consisted of checking whether the final value of the variable stayed NULL.
   
-<Milan>
+Milan
 
   Test for ...:
 
@@ -145,7 +145,7 @@ ScreenShots: <img width="1321" alt="instrumentation #2" src="https://github.com/
 
   Reason For Coverage Improvement: 
 
-<Toprak>
+Toprak
 
   Test for setPosition:
 
@@ -172,7 +172,7 @@ ScreenShots: <img width="1321" alt="instrumentation #2" src="https://github.com/
 
   Reason For Coverage Improvement: The reason I added coverage was the sole reason that spotifyError == null, which did not necessarily cover the if clause when error code 400 is thrown. I added a method that virtually creates a variable that has 400 status code thrown and then checked it with the correspondent error that is thrown on the method.
 
-<Can>
+Can
   
   Test for ...:
 
