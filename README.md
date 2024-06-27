@@ -166,6 +166,7 @@ Can
   <img width="469" alt="coverage-deser-post" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/af0d6600-506d-421f-b9a4-c983450ccee1">
 
   Reason For Coverage Improvement: The coverage increased after adding the test as there was no testing for the condition where either the "if" or the "else if" did not hit, meaning that the invisible "else" statement was not tested for. As a result the test simply consisted of checking whether the final value of the variable stayed NULL.
+
   
 Milan
 
@@ -174,6 +175,8 @@ Milan
   Link to commit: https://github.com/Ronin0105/spotify-web-api-wrapper/commit/ce8ffdc2620eb1ca4d109275b3a3a48d35d7eb7c
   
   Coverage Results Before Test Implementation:
+  ![Screenshot 2024-06-27 141854](https://github.com/Ronin0105/spotify-web-api-wrapper/assets/114068496/f6c189f8-8b94-474d-936d-54ca06ae511f)
+
 
   Coverage Results After Test Implementation:
   ![image](https://github.com/Ronin0105/spotify-web-api-wrapper/assets/114068496/678b0490-06ef-41ad-b954-824e1573066f)
@@ -185,6 +188,7 @@ Milan
   Link to commit: https://github.com/Ronin0105/spotify-web-api-wrapper/commit/2d87b321ec045e2928491c556daa92cdbfa5599e
   
   Coverage Results Before Test Implementation:
+  ![Screenshot 2024-06-27 141743](https://github.com/Ronin0105/spotify-web-api-wrapper/assets/114068496/5024e784-4815-4ad5-a9c8-cb5830dfe818)
 
   Coverage Results After Test Implementation:
   ![Screenshot 2024-06-27 135550](https://github.com/Ronin0105/spotify-web-api-wrapper/assets/114068496/e48a43f8-3b18-4e6c-86c1-49df82437bb0)
@@ -262,5 +266,7 @@ Jakub Kavan - I singularly worked on the AbstractPlayableObjectDeserializer clas
 Sarp Toprak Birben - I worked on ResponseChecker and PlaylistApiRetrofit, although I have added coverage & instrumentation to the class, responseChecker. I could not add any improvement to the coverage, and then later on I completed ResponseChecker. For the other code improvement, I worked with my teammate on Offset class where we took on two different methods and increased its coverage and added instrumentation.
 
 Can Borcbakan - I worked on PlaylistApiRetrofit, increased the branch coverage & added instrumentation to the class. I examined the files for missing branch coverage and cooperated with my team to individually take on different parts.
+
+Milan Rado - I have increased the branch coverage for BrowseApiRetrofit and ArtistApiRetrofit classes. In both cases acquired 50% coverage improvement. Besides added code instrumentation for coverage measurement. Also played a greater role in finding the project. 
 
 
