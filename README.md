@@ -174,9 +174,19 @@ Toprak
 
 Can
   
-  Test for ...:
+  Test for deleteItemsFromPlaylist:
 
-  Link to commit: 
+  Link to commit:  https://github.com/jzheng2017/spotify-web-api-wrapper/commit/bf9c992908f59da783121441e81be2292e4c76f5
+  
+  Coverage Results Before Test Implementation:
+
+  Coverage Results After Test Implementation:
+
+  Reason For Coverage Improvement: 
+  
+   Test for createPlaylist:
+
+  Link to commit:  https://github.com/jzheng2017/spotify-web-api-wrapper/commit/bf9c992908f59da783121441e81be2292e4c76f5
   
   Coverage Results Before Test Implementation:
 
