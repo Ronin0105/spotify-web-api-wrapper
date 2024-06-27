@@ -53,18 +53,42 @@ Jakub Kavan (vu\jka246)
   
   <img width="539" alt="Deserialize-true" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/122223981/76489277-7d4c-455f-83de-c207cb737b43">
 
-Milan
+Milan Rado(mra269)
   
- Function name: 
+  Function name: mapSeedParameters() --> (it's inside BrowseApiRetrifit.java class)
 
   The link to the commit where I wrote the instrumentation:
+  https://github.com/Ronin0105/spotify-web-api-wrapper/commit/43a6ae9ce6545c08fa7c42ac91e6597893ca4fa1
+  AND
+  https://github.com/Ronin0105/spotify-web-api-wrapper/commit/310c5156e49b29420bd58ae083b0ff8144cd2e84#diff-3d3cae4853a94389fbf370aa685438fad9a57bfb2fee70c48397b93517ed2ea9
+  (in the second commit I added extra key-values to track every branch)
 
+  ScreenShots: (of the corresponing tests log, which test the mapSeedParameters() function)
+    ![Screenshot 2024-06-27 132856](https://github.com/Ronin0105/spotify-web-api-wrapper/assets/114068496/51eca530-d39d-482c-9554-7415a7c09cd0)
+   -here every list has some values
+
+  ![Screenshot 2024-06-27 132913](https://github.com/Ronin0105/spotify-web-api-wrapper/assets/114068496/6033146b-0d9c-4957-a542-c808c90dfe67)
+  -here only artist is empty
+
+  ![Screenshot 2024-06-27 132932](https://github.com/Ronin0105/spotify-web-api-wrapper/assets/114068496/c1179728-9cb9-47d9-892f-3f14be17cb65)
+  -here only genre is empty
+
+  ![Screenshot 2024-06-27 132948](https://github.com/Ronin0105/spotify-web-api-wrapper/assets/114068496/14f61cc9-f122-456b-a9ce-a29e353ba7d4)
+  -here only track is empty
+
+
+  Function name: getArtistAlbums() --> (it's inside ArtistApiRetrofit.java class)
+
+  The link to the commit where I wrote the instrumentation:
+  https://github.com/Ronin0105/spotify-web-api-wrapper/commit/310c5156e49b29420bd58ae083b0ff8144cd2e84#diff-3d3cae4853a94389fbf370aa685438fad9a57bfb2fee70c48397b93517ed2ea9
+   
   ScreenShots:
+  ![Screenshot 2024-06-27 133722](https://github.com/Ronin0105/spotify-web-api-wrapper/assets/114068496/0f9fbfb1-ed29-4c67-9033-13e5ff8df8b1)
+  -here list of the album types is not empty
 
-  When running a test does not enter the conditional statement:
-  
-  When running a test does enter the conditional statement:
-  
+  ![Screenshot 2024-06-27 133940](https://github.com/Ronin0105/spotify-web-api-wrapper/assets/114068496/4a1ee3db-d9d7-488e-b46d-bef7cbf0248d)
+  -here list of the album types is empty
+
 
 Toprak
   
@@ -145,15 +169,28 @@ Can
   
 Milan
 
-  Test for ...:
+  Tests for mapSeedParameters():
 
-  Link to commit: 
+  Link to commit: https://github.com/Ronin0105/spotify-web-api-wrapper/commit/ce8ffdc2620eb1ca4d109275b3a3a48d35d7eb7c
   
   Coverage Results Before Test Implementation:
 
   Coverage Results After Test Implementation:
+  ![image](https://github.com/Ronin0105/spotify-web-api-wrapper/assets/114068496/678b0490-06ef-41ad-b954-824e1573066f)
 
-  Reason For Coverage Improvement: 
+  Reason For Coverage Improvement: Originally it wasn't testing whether the progrem acts as it should when one of the three lists, which the function uses is empty. So I added 3 extra tests where one of the lists is empty while the other two are not. 
+
+  Test for getArtistAlbums():
+
+  Link to commit: https://github.com/Ronin0105/spotify-web-api-wrapper/commit/2d87b321ec045e2928491c556daa92cdbfa5599e
+  
+  Coverage Results Before Test Implementation:
+
+  Coverage Results After Test Implementation:
+  ![Screenshot 2024-06-27 135550](https://github.com/Ronin0105/spotify-web-api-wrapper/assets/114068496/e48a43f8-3b18-4e6c-86c1-49df82437bb0)
+
+  Reason For Coverage Improvement: Same as in the first function, it wasn't testing when the list of album types is empty, so I made an extra test for that. 
+
 
 Toprak
 
