@@ -89,7 +89,7 @@ ScreenShots: <img width="1321" alt="instrumentation #2" src="https://github.com/
 
 Can
 
- Function name: 
+ Function name: deleteItemsFromPlaylist
 
   The link to the commit where I wrote the instrumentation:
   https://github.com/jzheng2017/spotify-web-api-wrapper/commit/557b8d1016b2d4b410e47c46dff215efce36d6b0
@@ -97,9 +97,18 @@ Can
   ScreenShots:
 
   When running a test does not enter the conditional statement:
+<img width="962" alt="Screenshot 2024-06-27 at 13 22 01" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/172129136/3ae6034d-6aa7-470f-aa31-26b01868d807">
+  
+  Function name: createPlaylist
+
+  The link to the commit where I wrote the instrumentation:
+  https://github.com/jzheng2017/spotify-web-api-wrapper/commit/557b8d1016b2d4b410e47c46dff215efce36d6b0
+
+  ScreenShots:
   
   When running a test does enter the conditional statement:
-  
+  <img width="1133" alt="Screenshot 2024-06-27 at 13 20 59" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/172129136/f77c2afd-4952-4934-bad1-10fc0cafcb54">
+
 ##Individual Tests
 
 <Jakub Kavan (vu\jka246)>
@@ -180,20 +189,24 @@ Can
   Link to commit:  https://github.com/jzheng2017/spotify-web-api-wrapper/commit/bf9c992908f59da783121441e81be2292e4c76f5
   
   Coverage Results Before Test Implementation:
+<img width="1069" alt="before" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/172129136/677434cd-4062-4c76-a935-9c21a89944ba">
 
   Coverage Results After Test Implementation:
+<img width="1130" alt="after" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/172129136/865e9129-e2a3-4ab9-827b-4ebd6bd35a45">
 
-  Reason For Coverage Improvement: 
+  Reason For Coverage Improvement: the tests did not have false hits on an if statement, In order for that to happen I wrote a test that runs the function with non empty value for snapshotid.
   
    Test for createPlaylist:
 
   Link to commit:  https://github.com/jzheng2017/spotify-web-api-wrapper/commit/bf9c992908f59da783121441e81be2292e4c76f5
   
   Coverage Results Before Test Implementation:
+<img width="1512" alt="before" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/172129136/7e95d6e5-d826-448e-ab4c-26c43810f3c8">
 
   Coverage Results After Test Implementation:
+<img width="1512" alt="after" src="https://github.com/Ronin0105/spotify-web-api-wrapper/assets/172129136/e00ecf7a-66f8-407a-b246-fa3e110fba2c">
 
-  Reason For Coverage Improvement: 
+  Reason For Coverage Improvement: this test checks a condition where the userid is empty, there were no hits on the coverage even though a similar test existed. I wasn't sure why that one did not increase coverage but I implemented it in a different way.
 
 ##Overall 
 
@@ -211,5 +224,6 @@ Jakub Kavan - I singularly worked on the AbstractPlayableObjectDeserializer clas
 
 Sarp Toprak Birben - I worked on ResponseChecker and PlaylistApiRetrofit, although I have added coverage & instrumentation to the class, responseChecker. I could not add any improvement to the coverage, and then later on I completed ResponseChecker. For the other code improvement, I worked with my teammate on Offset class where we took on two different methods and increased its coverage and added instrumentation.
 
+Can Borcbakan - I worked on PlaylistApiRetrofit, increased the branch coverage & added instrumentation to the class. I examined the files for missing branch coverage and cooperated with my team to individually take on different parts.
 
 
